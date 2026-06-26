@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^10.4.23",
+    "init-p": "^1.0.0",
+    "npx": "^10.2.2",
+    "postcss": "^8.5.6"
+  }
+}
