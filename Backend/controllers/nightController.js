@@ -3,8 +3,8 @@ const createAuditLog = require("../utils/createAuditLog");
 const createNotification = require("../utils/createNotification");
 
 // ================= HOSTEL LOCATION =================
-const HOSTEL_LAT = 26.7321546; // 🔴 Replace with actual hostel latitude
-const HOSTEL_LONG = 83.4315236; // 🔴 Replace with actual hostel longitude
+const HOSTEL_LAT = Number(process.env.HOSTEL_LATITUDE);; // 🔴 Replace with actual hostel latitude
+const HOSTEL_LONG =Number(process.env.HOSTEL_LONGITUDE) ; // 🔴 Replace with actual hostel longitude
 
 const MAX_DISTANCE = 200; // metres
 
