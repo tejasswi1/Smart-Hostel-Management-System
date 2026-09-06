@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../api/axios";
-import "./AuditLog.css";
+import "./Auditlog.css";
 
 export default function AuditLogs() {
   const [logs, setLogs] = useState([]);
