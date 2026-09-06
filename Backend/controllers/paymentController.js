@@ -25,3 +25,4 @@ exports.payBill = async (req, res) => {
     res.status(500).json({ msg: "Server error", error: err.message });
   }
 };
+

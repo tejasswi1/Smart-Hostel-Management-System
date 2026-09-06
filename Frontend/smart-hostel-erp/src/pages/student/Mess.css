@@ -1,0 +1,786 @@
+/* =========================================
+   STUDENT MESS PAGE
+========================================= */
+
+.mess-page {
+  min-height: 100vh;
+  padding: 35px;
+  box-sizing: border-box;
+  background: #f8fafc;
+}
+
+.mess-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.mess-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.mess-eyebrow {
+  margin: 0 0 5px;
+  color: #7c3aed;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.mess-header h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 28px;
+  font-weight: 750;
+}
+
+.mess-header p:last-child {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.mess-header-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: #f5f3ff;
+  font-size: 24px;
+}
+
+/* =========================================
+   PAYMENT CARD
+========================================= */
+
+.mess-payment-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+}
+
+.mess-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.mess-card-label,
+.history-header p,
+.mess-section-title p {
+  display: block;
+  margin: 0 0 4px;
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.mess-card-header h2 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 17px;
+}
+
+.payment-status {
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.status-none {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.status-pending {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.status-approved {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.status-rejected {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* =========================================
+   PAYMENT UPLOAD
+========================================= */
+
+.payment-upload-area {
+  padding-top: 20px;
+}
+
+.payment-amount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px;
+
+  margin-bottom: 15px;
+
+  border-radius: 12px;
+
+  background: #f8fafc;
+}
+
+.payment-amount span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.payment-amount strong {
+  color: #0f172a;
+  font-size: 18px;
+}
+
+/* =========================================
+   REJECTED
+========================================= */
+
+.rejected-message {
+  display: flex;
+  gap: 11px;
+
+  padding: 13px;
+
+  margin-bottom: 15px;
+
+  border: 1px solid #fecaca;
+  border-radius: 11px;
+
+  background: #fef2f2;
+}
+
+.rejected-message > span {
+  font-size: 17px;
+}
+
+.rejected-message strong {
+  color: #991b1b;
+  font-size: 12px;
+}
+
+.rejected-message p {
+  margin: 3px 0 0;
+  color: #b91c1c;
+  font-size: 11px;
+}
+
+/* =========================================
+   FILE UPLOAD
+========================================= */
+
+.file-upload-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 15px;
+
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.file-upload-box:hover {
+  border-color: #8b5cf6;
+  background: #faf5ff;
+}
+
+.file-upload-box input {
+  display: none;
+}
+
+.upload-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #f5f3ff;
+
+  font-size: 18px;
+}
+
+.file-upload-box strong {
+  display: block;
+
+  max-width: 500px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: #334155;
+
+  font-size: 12px;
+}
+
+.file-upload-box span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+.upload-payment-button {
+  width: 100%;
+
+  margin-top: 14px;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #7c3aed;
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.upload-payment-button:hover:not(:disabled) {
+  background: #6d28d9;
+  transform: translateY(-1px);
+}
+
+.upload-payment-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   PAYMENT MESSAGE
+========================================= */
+
+.payment-message {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 18px;
+
+  padding: 14px;
+
+  border-radius: 12px;
+}
+
+.pending-message {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+}
+
+.approved-message {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.message-icon {
+  width: 38px;
+  height: 38px;
+
+  min-width: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: white;
+
+  font-weight: 700;
+}
+
+.pending-message .message-icon {
+  color: #ea580c;
+}
+
+.approved-message .message-icon {
+  color: #16a34a;
+}
+
+.payment-message strong {
+  color: #334155;
+  font-size: 12px;
+}
+
+.payment-message p {
+  margin: 3px 0 0;
+  color: #64748b;
+  font-size: 11px;
+}
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.mess-section-title {
+  margin-bottom: 12px;
+}
+
+.mess-section-title h2 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 17px;
+}
+
+/* =========================================
+   BALANCE
+========================================= */
+
+.balance-card {
+  overflow: hidden;
+
+  margin-bottom: 18px;
+
+  border-radius: 18px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+}
+
+.balance-main {
+  padding: 23px;
+
+  background: #faf5ff;
+
+  border-bottom: 1px solid #ede9fe;
+}
+
+.balance-main span {
+  color: #7c3aed;
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.balance-main h2 {
+  margin: 4px 0 2px;
+
+  color: #5b21b6;
+
+  font-size: 32px;
+  font-weight: 750;
+}
+
+.balance-main p {
+  margin: 0;
+
+  color: #8b5cf6;
+
+  font-size: 11px;
+}
+
+.balance-stats {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.balance-stat {
+  padding: 16px;
+
+  border-right: 1px solid #f1f5f9;
+}
+
+.balance-stat:last-child {
+  border-right: none;
+}
+
+.balance-stat span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #94a3b8;
+
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.balance-stat strong {
+  color: #334155;
+
+  font-size: 14px;
+}
+
+/* =========================================
+   SCAN CARD
+========================================= */
+
+.scan-meal-link {
+  display: block;
+
+  color: inherit;
+  text-decoration: none;
+
+  margin-bottom: 30px;
+}
+
+.scan-meal-card {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 16px 18px;
+
+  border: 1px solid #ddd6fe;
+
+  border-radius: 15px;
+
+  background: white;
+
+  transition: 0.2s;
+}
+
+.scan-meal-card:hover {
+  transform: translateY(-2px);
+
+  background: #faf5ff;
+
+  box-shadow: 0 7px 20px rgba(124, 58, 237, 0.08);
+}
+
+.scan-icon {
+  width: 43px;
+  height: 43px;
+
+  min-width: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: #f5f3ff;
+
+  font-size: 19px;
+}
+
+.scan-meal-card strong {
+  display: block;
+
+  color: #334155;
+
+  font-size: 13px;
+}
+
+.scan-meal-card p {
+  margin: 3px 0 0;
+
+  color: #64748b;
+
+  font-size: 10px;
+}
+
+.scan-arrow {
+  margin-left: auto;
+
+  color: #7c3aed;
+
+  font-size: 20px;
+}
+
+/* =========================================
+   HISTORY
+========================================= */
+
+.history-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+}
+
+.history-header h2 {
+  margin: 0;
+
+  color: #1e293b;
+
+  font-size: 17px;
+}
+
+.history-header > span {
+  padding: 5px 9px;
+
+  border-radius: 999px;
+
+  background: #f1f5f9;
+
+  color: #64748b;
+
+  font-size: 9px;
+  font-weight: 650;
+}
+
+.history-table-wrapper {
+  overflow-x: auto;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 15px;
+
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+}
+
+.history-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 550px;
+}
+
+.history-table th {
+  padding: 12px 15px;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  text-align: left;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.history-table td {
+  padding: 14px 15px;
+
+  border-bottom: 1px solid #f1f5f9;
+
+  font-size: 11px;
+}
+
+.history-table tr:last-child td {
+  border-bottom: none;
+}
+
+.date-value {
+  color: #475569;
+}
+
+.meal-name {
+  color: #334155;
+  font-weight: 600;
+}
+
+.amount-value {
+  color: #dc2626;
+  font-weight: 650;
+}
+
+.balance-value {
+  color: #16a34a;
+  font-weight: 650;
+}
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.empty-history {
+  padding: 45px 20px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 15px;
+}
+
+.empty-history > div {
+  font-size: 30px;
+
+  margin-bottom: 8px;
+}
+
+.empty-history h3 {
+  margin: 0;
+
+  color: #334155;
+
+  font-size: 14px;
+}
+
+.empty-history p {
+  margin: 5px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+}
+
+/* =========================================
+   LOADING
+========================================= */
+
+.mess-loading {
+  min-height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #64748b;
+}
+
+.mess-loading p {
+  font-size: 12px;
+}
+
+.mess-spinner {
+  width: 28px;
+  height: 28px;
+
+  margin-bottom: 10px;
+
+  border: 3px solid #ede9fe;
+
+  border-top-color: #7c3aed;
+
+  border-radius: 50%;
+
+  animation: mess-spin 0.8s linear infinite;
+}
+
+@keyframes mess-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.mess-error {
+  max-width: 400px;
+
+  margin: 100px auto;
+
+  padding: 30px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 15px;
+
+  color: #dc2626;
+}
+
+.mess-error span {
+  font-size: 30px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+  .mess-page {
+    padding: 85px 15px 25px;
+  }
+
+  .mess-header h1 {
+    font-size: 24px;
+  }
+
+  .balance-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .balance-stat {
+    border-right: none;
+
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .balance-stat:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .mess-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .mess-payment-card {
+    padding: 16px;
+  }
+
+  .mess-card-header {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .payment-status {
+    font-size: 9px;
+  }
+
+  .balance-main h2 {
+    font-size: 28px;
+  }
+}

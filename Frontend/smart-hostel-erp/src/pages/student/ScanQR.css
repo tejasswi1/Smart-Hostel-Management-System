@@ -1,0 +1,497 @@
+/* =========================================
+   SCAN QR PAGE
+========================================= */
+
+.scan-page {
+  min-height: 100vh;
+
+  padding: 35px;
+
+  box-sizing: border-box;
+
+  background: #f8fafc;
+}
+
+.scan-container {
+  width: 100%;
+  max-width: 650px;
+
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.scan-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.scan-eyebrow {
+  margin: 0 0 5px;
+
+  color: #7c3aed;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.scan-header h1 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 28px;
+  font-weight: 750;
+}
+
+.scan-header p:last-child {
+  margin: 6px 0 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.scan-header-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background: #f5f3ff;
+
+  font-size: 23px;
+}
+
+/* =========================================
+   SCANNER CARD
+========================================= */
+
+.scanner-card {
+  padding: 20px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 4px 18px rgba(15, 23, 42, 0.04);
+}
+
+.scanner-card-header {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding-bottom: 17px;
+
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.scanner-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: #f5f3ff;
+
+  font-size: 18px;
+}
+
+.scanner-card-header h2 {
+  margin: 0;
+
+  color: #334155;
+
+  font-size: 16px;
+}
+
+.scanner-card-header p {
+  margin: 3px 0 0;
+
+  color: #64748b;
+
+  font-size: 11px;
+}
+
+/* =========================================
+   SCANNER
+========================================= */
+
+.scanner-wrapper {
+  display: flex;
+
+  justify-content: center;
+
+  padding: 25px 10px;
+}
+
+.scanner-frame {
+  position: relative;
+
+  width: 350px;
+  max-width: 100%;
+
+  padding: 8px;
+
+  border-radius: 16px;
+
+  background: #0f172a;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.18);
+}
+
+/*
+  html5-qrcode creates its own internal
+  video and controls. We style the container
+  without touching scanner functionality.
+*/
+
+.qr-reader {
+  width: 100% !important;
+
+  overflow: hidden;
+
+  border-radius: 11px;
+}
+
+.qr-reader video {
+  border-radius: 10px !important;
+}
+
+.qr-reader img {
+  max-width: 100%;
+}
+
+.qr-reader button {
+  margin-top: 10px;
+
+  padding: 8px 12px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #7c3aed;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+/* =========================================
+   SCANNER INSTRUCTION
+========================================= */
+
+.scanner-instruction {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 11px 13px;
+
+  border-radius: 10px;
+
+  background: #f8fafc;
+}
+
+.scanner-instruction span {
+  font-size: 15px;
+}
+
+.scanner-instruction p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.scan-message {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 15px;
+
+  padding: 14px;
+
+  border-radius: 13px;
+}
+
+.scan-success {
+  background: #f0fdf4;
+
+  border: 1px solid #bbf7d0;
+}
+
+.scan-error {
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+}
+
+.message-icon {
+  width: 38px;
+  height: 38px;
+
+  min-width: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: white;
+
+  font-weight: 750;
+}
+
+.scan-success .message-icon {
+  color: #16a34a;
+}
+
+.scan-error .message-icon {
+  color: #dc2626;
+}
+
+.scan-message strong {
+  display: block;
+
+  color: #334155;
+
+  font-size: 12px;
+}
+
+.scan-message p {
+  margin: 3px 0 0;
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+}
+
+/* =========================================
+   BALANCE CARD
+========================================= */
+
+.scan-balance-card {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  margin-top: 15px;
+
+  padding: 18px;
+
+  border-radius: 15px;
+
+  background: #faf5ff;
+
+  border: 1px solid #ddd6fe;
+}
+
+.balance-icon {
+  width: 44px;
+  height: 44px;
+
+  min-width: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: white;
+
+  font-size: 19px;
+}
+
+.balance-content {
+  flex: 1;
+}
+
+.balance-content span {
+  display: block;
+
+  color: #7c3aed;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+}
+
+.balance-content h2 {
+  margin: 3px 0 1px;
+
+  color: #5b21b6;
+
+  font-size: 25px;
+}
+
+.balance-content p {
+  margin: 0;
+
+  color: #8b5cf6;
+
+  font-size: 10px;
+}
+
+.balance-check {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #16a34a;
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================================
+   INFO
+========================================= */
+
+.scan-info {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-top: 15px;
+
+  padding: 13px 15px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 12px;
+
+  background: white;
+}
+
+.scan-info-icon {
+  width: 35px;
+  height: 35px;
+
+  min-width: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #f8fafc;
+
+  font-size: 15px;
+}
+
+.scan-info strong {
+  display: block;
+
+  color: #334155;
+
+  font-size: 11px;
+}
+
+.scan-info p {
+  margin: 3px 0 0;
+
+  color: #64748b;
+
+  font-size: 10px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+  .scan-page {
+    padding: 85px 15px 25px;
+  }
+
+  .scan-header h1 {
+    font-size: 24px;
+  }
+
+  .scanner-card {
+    padding: 15px;
+  }
+
+  .scanner-wrapper {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .scan-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .scanner-card {
+    border-radius: 15px;
+  }
+
+  .scan-header {
+    align-items: flex-start;
+  }
+
+  .scan-header-icon {
+    width: 45px;
+    height: 45px;
+
+    font-size: 20px;
+  }
+
+  .scanner-frame {
+    width: 100%;
+  }
+
+  .balance-content h2 {
+    font-size: 22px;
+  }
+}

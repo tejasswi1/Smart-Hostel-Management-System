@@ -1,4 +1,3 @@
-// routes/complaintRoutes.js
 const express = require("express");
 const router = express.Router();
 
@@ -13,16 +12,15 @@ const {
   resolveComplaint,
 } = require("../controllers/complaintController");
 
-// STUDENT → create complaint
+// Student
 router.post(
   "/",
   auth,
   role("student"),
-  upload.single("photo"),   // 🔥 FIELD NAME MUST BE "photo"
+  upload.single("photo"),
   createComplaint
 );
 
-// STUDENT → my complaints
 router.get(
   "/my",
   auth,
@@ -30,7 +28,7 @@ router.get(
   myComplaints
 );
 
-// WARDEN → all complaints
+// Warden
 router.get(
   "/",
   auth,
@@ -38,7 +36,6 @@ router.get(
   allComplaints
 );
 
-// WARDEN → resolve
 router.put(
   "/resolve/:id",
   auth,

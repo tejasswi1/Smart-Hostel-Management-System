@@ -1,19 +1,13 @@
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
+
 const auth = require("../middleware/authMiddleware");
 const role = require("../middleware/roleMiddleware");
-const movementController = require("../controllers/movementController");
+const ctrl = require("../controllers/movementController");
 
-// Student goes out
-router.post("/out", auth, role("student"), movementController.goOut);
-
-// Student comes in
-router.post("/in", auth, role("student"), movementController.goIn);
-
-router.get(
-  "/my-movements",
-  auth,
-  role("student"),
-  movementController.myMovements
-);
+// Student
+router.post("/out", auth, role("student"), ctrl.goOut);
+router.post("/in", auth, role("student"), ctrl.goIn);
+router.get("/my", auth, role("student"), ctrl.myMovements);
 
 module.exports = router;

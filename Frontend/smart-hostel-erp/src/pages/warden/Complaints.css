@@ -1,0 +1,625 @@
+/* =========================================
+   WARDEN COMPLAINTS PAGE
+========================================= */
+
+.complaints-page {
+  min-height: calc(100vh - 60px);
+  padding: 35px;
+  background: #f8fafc;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.complaints-header {
+  max-width: 1050px;
+  margin: 0 auto 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.complaints-eyebrow {
+  margin: 0 0 5px;
+
+  color: #2563eb;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.13em;
+}
+
+.complaints-header h1 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 28px;
+  font-weight: 750;
+}
+
+.complaints-header p:last-child {
+  margin: 6px 0 0;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   COUNT
+========================================= */
+
+.complaints-count {
+  min-width: 75px;
+
+  padding: 12px 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.complaints-count span {
+  color: #2563eb;
+
+  font-size: 22px;
+  font-weight: 750;
+}
+
+.complaints-count small {
+  color: #94a3b8;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================
+   LIST
+========================================= */
+
+.complaints-list {
+  max-width: 1050px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.complaint-card {
+  padding: 20px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 4px 16px rgba(15, 23, 42, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.complaint-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.07);
+}
+
+.complaint-pending {
+  border-left: 4px solid #f59e0b;
+}
+
+.complaint-resolved {
+  border-left: 4px solid #22c55e;
+}
+
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.complaint-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding-bottom: 16px;
+
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.complaint-title-area {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.complaint-icon {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #eff6ff;
+
+  font-size: 18px;
+}
+
+.complaint-title-area h2 {
+  margin: 0;
+
+  color: #1e293b;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.complaint-title-area span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status-badge {
+  padding: 7px 11px;
+
+  border-radius: 20px;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.status-pending {
+  color: #b45309;
+
+  background: #fffbeb;
+
+  border: 1px solid #fde68a;
+}
+
+.status-resolved {
+  color: #15803d;
+
+  background: #f0fdf4;
+
+  border: 1px solid #bbf7d0;
+}
+
+
+/* =========================================
+   STUDENT
+========================================= */
+
+.student-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-top: 17px;
+
+  padding: 12px;
+
+  background: #f8fafc;
+
+  border-radius: 11px;
+}
+
+.student-avatar {
+  width: 38px;
+  height: 38px;
+
+  min-width: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #dbeafe;
+
+  color: #2563eb;
+
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.student-info small {
+  display: block;
+
+  color: #94a3b8;
+
+  font-size: 8px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.05em;
+}
+
+.student-info strong {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #334155;
+
+  font-size: 11px;
+}
+
+.student-info span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #64748b;
+
+  font-size: 9px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.complaint-description {
+  margin-top: 18px;
+}
+
+.section-label {
+  margin: 0 0 7px;
+
+  color: #94a3b8;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+}
+
+.complaint-description > p:last-child {
+  margin: 0;
+
+  padding: 13px;
+
+  color: #475569;
+
+  background: #f8fafc;
+
+  border-radius: 10px;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   PHOTO
+========================================= */
+
+.complaint-photo-section {
+  margin-top: 18px;
+}
+
+.complaint-photo {
+  width: 300px;
+  max-width: 100%;
+  max-height: 250px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  border: 1px solid #e2e8f0;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.complaint-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-top: 18px;
+
+  padding-top: 15px;
+
+  border-top: 1px solid #f1f5f9;
+}
+
+.complaint-meta {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.complaint-meta span {
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+.complaint-meta b {
+  color: #64748b;
+}
+
+
+/* =========================================
+   RESOLVE BUTTON
+========================================= */
+
+.resolve-btn {
+  padding: 9px 15px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #16a34a;
+
+  color: white;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.resolve-btn:hover {
+  background: #15803d;
+
+  transform: translateY(-1px);
+}
+
+.resolve-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.complaints-empty {
+  max-width: 500px;
+
+  margin: 70px auto;
+
+  padding: 40px 25px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 5px 20px rgba(15, 23, 42, 0.04);
+}
+
+.empty-icon {
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 15px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 17px;
+
+  background: #f0fdf4;
+
+  color: #16a34a;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.complaints-empty h2 {
+  margin: 0;
+
+  color: #334155;
+
+  font-size: 18px;
+}
+
+.complaints-empty p {
+  margin: 7px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.complaints-loading {
+  min-height: 60vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+
+  margin-bottom: 15px;
+
+  border: 3px solid #e2e8f0;
+
+  border-top-color: #2563eb;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+.complaints-loading h3 {
+  margin: 0;
+
+  color: #334155;
+
+  font-size: 14px;
+}
+
+.complaints-loading p {
+  margin-top: 5px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+  .complaints-page {
+    padding: 25px 15px;
+  }
+
+  .complaints-header h1 {
+    font-size: 23px;
+  }
+
+  .complaints-count {
+    min-width: 55px;
+
+    padding: 9px 11px;
+  }
+
+  .complaint-card {
+    padding: 15px;
+  }
+
+  .complaint-top {
+    align-items: flex-start;
+  }
+
+  .complaint-footer {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .resolve-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+
+  .complaints-count {
+    display: none;
+  }
+
+  .complaint-title-area h2 {
+    font-size: 13px;
+  }
+
+  .status-badge {
+    font-size: 8px;
+
+    padding: 6px 8px;
+  }
+
+  .complaint-photo {
+    width: 100%;
+  }
+}

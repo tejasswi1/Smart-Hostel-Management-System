@@ -9,7 +9,7 @@ const nightEntrySchema = new mongoose.Schema({
 
   reason: {
     type: String,
-    required: true,
+    default:"",
     trim: true
   },
 

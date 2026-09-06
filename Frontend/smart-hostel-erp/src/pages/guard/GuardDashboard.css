@@ -1,0 +1,469 @@
+/* =========================================
+   GUARD DASHBOARD
+========================================= */
+
+.guard-dashboard {
+  min-height: calc(100vh - 70px);
+
+  padding: 32px;
+
+  background: #f6f8fc;
+
+  color: #172033;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.guard-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  margin-bottom: 28px;
+}
+
+.guard-label {
+  color: #f97316;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.guard-header h1 {
+  margin: 6px 0 7px;
+
+  font-size: 30px;
+
+  font-weight: 750;
+
+  letter-spacing: -0.5px;
+}
+
+.guard-header p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.guard-profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 16px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 6px 20px rgba(30, 41, 59, 0.05);
+}
+
+.guard-profile-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #fff7ed;
+
+  border-radius: 11px;
+
+  font-size: 20px;
+}
+
+.guard-profile span {
+  display: block;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+.guard-profile strong {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   INFO BAR
+========================================= */
+
+.guard-info-bar {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+
+  margin-bottom: 35px;
+}
+
+.guard-info-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 18px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 5px 20px rgba(30, 41, 59, 0.04);
+}
+
+.guard-info-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  font-size: 19px;
+}
+
+.guard-info-icon.night {
+  background: #eef2ff;
+}
+
+.guard-info-icon.movement {
+  background: #ecfdf5;
+}
+
+.guard-info-icon.students {
+  background: #eff6ff;
+}
+
+.guard-info-item strong {
+  display: block;
+
+  font-size: 13px;
+}
+
+.guard-info-item span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+
+.guard-section-header {
+  margin-bottom: 16px;
+}
+
+.guard-section-header h2 {
+  margin: 0;
+
+  font-size: 19px;
+}
+
+.guard-section-header p {
+  margin: 5px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   SERVICE CARDS
+========================================= */
+
+.guard-services {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+.guard-service-card {
+  display: block;
+
+  padding: 22px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 17px;
+
+  text-decoration: none;
+
+  color: inherit;
+
+  box-shadow:
+    0 7px 25px rgba(30, 41, 59, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.guard-service-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #fed7aa;
+
+  box-shadow:
+    0 15px 35px rgba(30, 41, 59, 0.09);
+}
+
+
+/* =========================================
+   SERVICE TOP
+========================================= */
+
+.service-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.service-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  font-size: 23px;
+}
+
+.night-icon {
+  background: #eef2ff;
+}
+
+.movement-icon {
+  background: #ecfdf5;
+}
+
+.students-icon {
+  background: #eff6ff;
+}
+
+.service-arrow {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #f8fafc;
+
+  border-radius: 50%;
+
+  color: #64748b;
+
+  font-size: 15px;
+
+  transition: 0.2s;
+}
+
+.guard-service-card:hover .service-arrow {
+  background: #fff7ed;
+
+  color: #ea580c;
+
+  transform: translateX(3px);
+}
+
+
+/* =========================================
+   SERVICE CONTENT
+========================================= */
+
+.guard-service-card h3 {
+  margin: 0 0 8px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+.guard-service-card p {
+  margin: 0;
+
+  min-height: 48px;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+.service-link {
+  display: inline-block;
+
+  margin-top: 18px;
+
+  color: #ea580c;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   SECURITY NOTE
+========================================= */
+
+.guard-security-note {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-top: 28px;
+
+  padding: 17px 20px;
+
+  background: #fffaf5;
+
+  border: 1px solid #fed7aa;
+
+  border-radius: 14px;
+}
+
+.security-note-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+
+  border-radius: 10px;
+
+  font-size: 18px;
+}
+
+.guard-security-note strong {
+  display: block;
+
+  font-size: 12px;
+}
+
+.guard-security-note p {
+  margin: 3px 0 0;
+
+  color: #9a6b45;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .guard-services {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .guard-info-bar {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 650px) {
+
+  .guard-dashboard {
+    padding: 18px;
+  }
+
+  .guard-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .guard-profile {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+  .guard-info-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .guard-services {
+    grid-template-columns: 1fr;
+  }
+
+  .guard-header h1 {
+    font-size: 25px;
+  }
+
+}

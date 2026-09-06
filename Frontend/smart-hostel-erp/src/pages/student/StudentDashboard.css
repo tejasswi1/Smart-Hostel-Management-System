@@ -1,0 +1,337 @@
+/* =========================================
+   STUDENT DASHBOARD
+========================================= */
+
+.student-dashboard {
+  min-height: 100vh;
+  padding: 35px;
+  background: #f8fafc;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.student-header {
+  max-width: 1200px;
+  margin: 0 auto 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.student-eyebrow {
+  margin: 0 0 8px;
+
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.student-header h1 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 30px;
+  font-weight: 750;
+}
+
+.student-welcome {
+  margin: 10px 0 0;
+
+  color: #64748b;
+  font-size: 14px;
+}
+
+.student-welcome strong {
+  color: #1e293b;
+}
+
+/* =========================================
+   ROLE CARD
+========================================= */
+
+.student-role-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 17px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+}
+
+.student-avatar {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+  color: #2563eb;
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.student-role-name {
+  margin: 0;
+
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.student-role {
+  margin: 3px 0 0;
+
+  color: #64748b;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+/* =========================================
+   SERVICES HEADER
+========================================= */
+
+.student-services-header {
+  max-width: 1200px;
+  margin: 0 auto 16px;
+}
+
+.student-services-header h2 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.student-services-header p {
+  margin: 5px 0 0;
+
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* =========================================
+   SERVICES GRID
+========================================= */
+
+.student-services-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* =========================================
+   SERVICE CARD
+========================================= */
+
+.student-service-card {
+  position: relative;
+
+  min-height: 170px;
+  padding: 21px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 17px;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.student-service-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #bfdbfe;
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================================
+   ICON
+========================================= */
+
+.service-icon {
+  width: 47px;
+  height: 47px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  margin-bottom: 17px;
+}
+
+.service-blue {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.service-purple {
+  background: #faf5ff;
+  color: #9333ea;
+}
+
+.service-orange {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.service-red {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.service-green {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.service-cyan {
+  background: #ecfeff;
+  color: #0891b2;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.service-content h3 {
+  margin: 0 0 7px;
+
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.service-content p {
+  max-width: 280px;
+
+  margin: 0;
+
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* =========================================
+   ARROW
+========================================= */
+
+.service-arrow {
+  position: absolute;
+
+  right: 18px;
+  bottom: 18px;
+
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: #94a3b8;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.student-service-card:hover .service-arrow {
+  background: #eff6ff;
+  color: #2563eb;
+  transform: translateX(3px);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+  .student-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .student-dashboard {
+    padding: 85px 16px 25px;
+  }
+
+  .student-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .student-header h1 {
+    font-size: 25px;
+  }
+
+  .student-role-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .student-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-service-card {
+    min-height: 155px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 430px) {
+  .student-dashboard {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .student-header h1 {
+    font-size: 23px;
+  }
+}

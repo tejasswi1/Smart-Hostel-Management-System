@@ -1,0 +1,396 @@
+/* =========================================
+   WARDEN DASHBOARD
+========================================= */
+
+.warden-page {
+  min-height: calc(100vh - 60px);
+
+  padding: 35px;
+
+  box-sizing: border-box;
+
+  background: #f8fafc;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.warden-header {
+  max-width: 1150px;
+
+  margin: 0 auto 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.warden-eyebrow {
+  margin: 0 0 5px;
+
+  color: #2563eb;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+}
+
+.warden-header h1 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 30px;
+
+  font-weight: 750;
+}
+
+.warden-subtitle {
+  margin: 7px 0 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.warden-header-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 17px;
+
+  background: #eff6ff;
+
+  font-size: 25px;
+
+  border: 1px solid #dbeafe;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.warden-welcome {
+  max-width: 1150px;
+
+  margin: 0 auto 32px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 17px 20px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 3px 15px rgba(15, 23, 42, 0.035);
+}
+
+.welcome-icon {
+  width: 42px;
+  height: 42px;
+
+  min-width: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: #eff6ff;
+
+  font-size: 19px;
+}
+
+.warden-welcome h3 {
+  margin: 0;
+
+  color: #334155;
+
+  font-size: 14px;
+}
+
+.warden-welcome p {
+  margin: 3px 0 0;
+
+  color: #64748b;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.warden-section-title {
+  max-width: 1150px;
+
+  margin: 0 auto 15px;
+}
+
+.warden-section-title h2 {
+  margin: 0;
+
+  color: #1e293b;
+
+  font-size: 18px;
+}
+
+.warden-section-title p {
+  margin: 4px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   CARD GRID
+========================================= */
+
+.warden-grid {
+  max-width: 1150px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.warden-card {
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  min-height: 145px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  text-decoration: none;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 3px 14px rgba(15, 23, 42, 0.035);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.warden-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #cbd5e1;
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================
+   CARD ICON
+========================================= */
+
+.warden-card-icon {
+  width: 46px;
+  height: 46px;
+
+  min-width: 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  font-size: 20px;
+}
+
+
+/* Different icon backgrounds */
+
+.night-icon {
+  background: #eef2ff;
+}
+
+.complaint-icon {
+  background: #fff7ed;
+}
+
+.mess-icon {
+  background: #ecfdf5;
+}
+
+.student-icon {
+  background: #fdf4ff;
+}
+
+.alert-icon {
+  background: #fef2f2;
+}
+
+.analytics-icon {
+  background: #eff6ff;
+}
+
+.audit-icon {
+  background: #f8fafc;
+}
+
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.warden-card-content {
+  flex: 1;
+
+  padding-right: 20px;
+}
+
+.warden-card-content h3 {
+  margin: 1px 0 7px;
+
+  color: #1e293b;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+.warden-card-content p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================
+   ARROW
+========================================= */
+
+.warden-arrow {
+  position: absolute;
+
+  right: 17px;
+
+  bottom: 15px;
+
+  color: #94a3b8;
+
+  font-size: 18px;
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.warden-card:hover .warden-arrow {
+  color: #2563eb;
+
+  transform: translateX(4px);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .warden-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .warden-page {
+    padding: 25px 15px;
+  }
+
+  .warden-header {
+    align-items: flex-start;
+  }
+
+  .warden-header h1 {
+    font-size: 25px;
+  }
+
+  .warden-header-icon {
+    width: 48px;
+    height: 48px;
+
+    font-size: 21px;
+  }
+
+  .warden-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .warden-card {
+    min-height: 125px;
+  }
+}
+
+@media (max-width: 400px) {
+  .warden-header-icon {
+    display: none;
+  }
+
+  .warden-welcome {
+    padding: 14px;
+  }
+
+  .warden-card {
+    padding: 17px;
+  }
+}

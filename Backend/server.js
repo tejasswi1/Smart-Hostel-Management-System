@@ -16,6 +16,7 @@ const testRoutes = require("./routes/testRoutes");
 const nightRoutes = require("./routes/nightRoutes");
 const movementRoutes = require("./routes/movementRoutes");
 const messBillRoutes = require("./routes/messBillRoutes");
+const messRoutes = require("./routes/messRoutes");
 const complaintRoutes = require("./routes/complaintRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const auditRoutes = require("./routes/auditRoutes");
@@ -24,12 +25,24 @@ const classGotoRoutes = require("./routes/classGotoRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 /* ===================== ROUTE MIDDLEWARE ===================== */
-
+console.log("authRoutes:", typeof authRoutes);
+console.log("testRoutes:", typeof testRoutes);
+console.log("nightRoutes:", typeof nightRoutes);
+console.log("movementRoutes:", typeof movementRoutes);
+console.log("messBillRoutes:", typeof messBillRoutes);
+console.log("messRoutes:", typeof messRoutes);
+console.log("complaintRoutes:", typeof complaintRoutes);
+console.log("notificationRoutes:", typeof notificationRoutes);
+console.log("auditRoutes:", typeof auditRoutes);
+console.log("analyticsRoutes:", typeof analyticsRoutes);
+console.log("classGotoRoutes:", typeof classGotoRoutes);
+console.log("userRoutes:", typeof userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/test", testRoutes);
 app.use("/api/night", nightRoutes);
 app.use("/api/movement", movementRoutes);
 app.use("/api/messbill", messBillRoutes);
+app.use("/api/mess", messRoutes);
 app.use("/api/complaints", complaintRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/audit-logs", auditRoutes);

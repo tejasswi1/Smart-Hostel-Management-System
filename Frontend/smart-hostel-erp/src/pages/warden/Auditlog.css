@@ -1,0 +1,521 @@
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.audit-page {
+  min-height: calc(100vh - 70px);
+
+  padding: 32px;
+
+  background: #f6f8fc;
+
+  color: #172033;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.audit-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 30px;
+}
+
+.audit-label {
+  margin: 0 0 6px;
+
+  color: #6366f1;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.audit-header h1 {
+  margin: 0;
+
+  font-size: 30px;
+  font-weight: 750;
+
+  letter-spacing: -0.5px;
+}
+
+.audit-header p:last-child {
+  margin-top: 8px;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   LOG COUNT
+========================================= */
+
+.log-count {
+  min-width: 160px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 15px 18px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 6px 20px rgba(30, 41, 59, 0.05);
+}
+
+.log-count > span {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eef2ff;
+
+  border-radius: 10px;
+
+  font-size: 19px;
+}
+
+.log-count small {
+  display: block;
+
+  color: #6b7280;
+
+  font-size: 11px;
+}
+
+.log-count strong {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 21px;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.audit-card {
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 30px rgba(30, 41, 59, 0.05);
+}
+
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.audit-card-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 22px 24px;
+
+  border-bottom: 1px solid #edf0f4;
+}
+
+.audit-card-header h2 {
+  margin: 0;
+
+  font-size: 18px;
+}
+
+.audit-card-header p {
+  margin: 5px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+.activity-badge {
+  padding: 6px 11px;
+
+  background: #ecfdf5;
+
+  color: #15803d;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+
+  font-weight: 650;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.audit-table-wrapper {
+  overflow-x: auto;
+}
+
+.audit-table {
+  width: 100%;
+
+  min-width: 1000px;
+
+  border-collapse: collapse;
+}
+
+.audit-table th {
+  padding: 14px 18px;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  text-align: left;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.6px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.audit-table td {
+  padding: 15px 18px;
+
+  border-bottom: 1px solid #f1f3f6;
+
+  font-size: 13px;
+
+  vertical-align: middle;
+}
+
+.audit-table tbody tr {
+  transition: background 0.2s;
+}
+
+.audit-table tbody tr:hover {
+  background: #fafbff;
+}
+
+.audit-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =========================================
+   INDEX
+========================================= */
+
+.log-index {
+  color: #94a3b8;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   USER
+========================================= */
+
+.log-user {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.log-avatar {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eef2ff;
+
+  color: #4f46e5;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.log-user strong {
+  display: block;
+
+  font-size: 13px;
+}
+
+.log-user small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+
+/* =========================================
+   ROLE BADGES
+========================================= */
+
+.role-badge {
+  display: inline-flex;
+
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-transform: capitalize;
+}
+
+.role-badge.student {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.role-badge.warden {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.role-badge.guard {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.role-badge.unknown {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+
+/* =========================================
+   ACTION
+========================================= */
+
+.action-badge {
+  display: inline-block;
+
+  max-width: 190px;
+
+  padding: 6px 10px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  color: #334155;
+
+  border-radius: 7px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  word-break: break-word;
+}
+
+
+/* =========================================
+   DETAILS
+========================================= */
+
+.details-cell {
+  max-width: 300px;
+
+  color: #64748b;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+.date-cell strong {
+  display: block;
+
+  font-size: 12px;
+}
+
+.date-cell small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.audit-empty {
+  padding: 70px 20px;
+
+  text-align: center;
+}
+
+.empty-icon {
+  width: 60px;
+  height: 60px;
+
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f1f5f9;
+
+  border-radius: 16px;
+
+  font-size: 27px;
+}
+
+.audit-empty h3 {
+  margin: 15px 0 6px;
+
+  font-size: 17px;
+}
+
+.audit-empty p {
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.audit-loading {
+  min-height: 60vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #64748b;
+}
+
+.audit-loading h3 {
+  margin: 15px 0 5px;
+
+  color: #334155;
+}
+
+.audit-loading p {
+  margin: 0;
+
+  font-size: 13px;
+}
+
+.audit-spinner {
+  width: 38px;
+  height: 38px;
+
+  border: 4px solid #e5e7eb;
+
+  border-top-color: #6366f1;
+
+  border-radius: 50%;
+
+  animation: auditSpin 0.8s linear infinite;
+}
+
+@keyframes auditSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .audit-page {
+    padding: 18px;
+  }
+
+  .audit-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .audit-header h1 {
+    font-size: 24px;
+  }
+
+  .log-count {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+  .audit-card-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+}

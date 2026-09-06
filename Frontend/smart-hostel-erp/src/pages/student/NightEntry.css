@@ -1,0 +1,524 @@
+/* =========================================
+   NIGHT ENTRY PAGE
+========================================= */
+
+.night-entry-page {
+  min-height: 100vh;
+  padding: 35px;
+  box-sizing: border-box;
+  background: #f8fafc;
+}
+
+.night-entry-container {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.night-entry-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.night-entry-title-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.night-entry-eyebrow {
+  margin: 0 0 4px;
+
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.night-entry-header h1 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 27px;
+  font-weight: 750;
+}
+
+.night-entry-header p:last-child {
+  margin: 5px 0 0;
+
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* =========================================
+   INFO
+========================================= */
+
+.night-entry-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 14px 16px;
+  margin-bottom: 20px;
+
+  background: #eff6ff;
+
+  border: 1px solid #dbeafe;
+  border-radius: 13px;
+}
+
+.night-entry-info-icon {
+  width: 38px;
+  height: 38px;
+
+  min-width: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: white;
+  color: #2563eb;
+}
+
+.night-entry-info strong {
+  display: block;
+
+  color: #1e40af;
+  font-size: 13px;
+}
+
+.night-entry-info span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #3b82f6;
+  font-size: 12px;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.night-entry-form {
+  background: white;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+
+  padding: 25px;
+
+  box-shadow:
+    0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.night-entry-section {
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.night-entry-section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  margin-bottom: 15px;
+}
+
+.section-number {
+  width: 32px;
+  height: 32px;
+
+  min-width: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #f1f5f9;
+  color: #475569;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.night-entry-section-heading h2 {
+  margin: 0;
+
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.night-entry-section-heading p {
+  margin: 4px 0 0;
+
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+.night-entry-input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 13px 14px;
+
+  resize: vertical;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 11px;
+
+  outline: none;
+
+  color: #1e293b;
+  font-family: inherit;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.night-entry-input:focus {
+  border-color: #60a5fa;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.night-entry-input::placeholder {
+  color: #94a3b8;
+}
+
+/* =========================================
+   LOCATION
+========================================= */
+
+.location-card {
+  padding: 15px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 13px;
+}
+
+.location-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.location-icon {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.location-row span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #64748b;
+  font-size: 11px;
+}
+
+.location-row strong {
+  display: block;
+
+  color: #1e293b;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  word-break: break-all;
+}
+
+.location-divider {
+  height: 1px;
+
+  margin: 12px 0;
+
+  background: #e2e8f0;
+}
+
+.location-success,
+.location-loading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 10px;
+
+  font-size: 12px;
+}
+
+.location-success {
+  color: #16a34a;
+}
+
+.location-loading {
+  color: #f59e0b;
+}
+
+/* =========================================
+   CAMERA
+========================================= */
+
+.camera-box {
+  position: relative;
+
+  width: 100%;
+  height: 350px;
+
+  overflow: hidden;
+
+  background: #0f172a;
+
+  border-radius: 14px;
+}
+
+.night-entry-video {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.camera-placeholder {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  color: #94a3b8;
+}
+
+.camera-placeholder span {
+  font-size: 12px;
+}
+
+/* =========================================
+   CAMERA BUTTONS
+========================================= */
+
+.camera-actions {
+  display: flex;
+  gap: 10px;
+
+  margin-top: 12px;
+}
+
+.camera-button,
+.capture-button {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 11px 15px;
+
+  border-radius: 10px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.camera-button {
+  border: 1px solid #cbd5e1;
+
+  background: white;
+  color: #334155;
+}
+
+.camera-button:hover {
+  background: #f8fafc;
+}
+
+.capture-button {
+  border: none;
+
+  background: #2563eb;
+  color: white;
+}
+
+.capture-button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================================
+   PHOTO SUCCESS
+========================================= */
+
+.photo-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 11px;
+  padding: 10px 12px;
+
+  border-radius: 9px;
+
+  background: #f0fdf4;
+  color: #15803d;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =========================================
+   SUBMIT
+========================================= */
+
+.night-entry-submit {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 13px 18px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: #2563eb;
+  color: white;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.night-entry-submit:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.night-entry-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.night-entry-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  margin-top: 16px;
+
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .night-entry-page {
+    padding: 85px 15px 25px;
+  }
+
+  .night-entry-header h1 {
+    font-size: 24px;
+  }
+
+  .night-entry-form {
+    padding: 18px;
+  }
+
+  .camera-box {
+    height: 280px;
+  }
+
+  .camera-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 450px) {
+  .night-entry-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .night-entry-form {
+    padding: 15px;
+  }
+
+  .night-entry-info {
+    align-items: flex-start;
+  }
+
+  .camera-box {
+    height: 240px;
+  }
+}

@@ -1,91 +1,46 @@
-// import { useEffect, useState } from "react";
-// import { getAllComplaints, resolveComplaint } from "../../api/complaint.api";
-
-// export default function WardenComplaints() {
-//   const [complaints, setComplaints] = useState([]);
-
-//   useEffect(() => {
-//     getAllComplaints().then(res => setComplaints(res.data));
-//   }, []);
-
-//   const resolve = async (id) => {
-//     await resolveComplaint(id);
-//     setComplaints(c => c.map(x => x._id === id ? {...x, status: "Resolved"} : x));
-//   };
-
-//   return (
-//     <div className="p-6">
-//       <h2 className="text-xl font-bold mb-4">Complaints</h2>
-//       {complaints.map(c => (
-//         <div key={c._id} className="border p-3 mb-3">
-//           <p><b>{c.category}</b> – {c.student.name}</p>
-//           <p>{c.description}</p>
-//           <p>Status: {c.status}</p>
-//           {c.status === "Pending" && (
-//             <button onClick={() => resolve(c._id)} className="bg-green-600 text-white px-3 py-1 mt-2">
-//               Mark Resolved
-//             </button>
-//           )}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../api/axios";
+import "./Complaints.css";
 
 export default function WardenComplaints() {
   const [complaints, setComplaints] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const token = localStorage.getItem("token");
-
-  // =========================
-  // FETCH ALL COMPLAINTS
-  // =========================
   const fetchComplaints = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:5000/api/complaints",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await api.get("/complaints");
 
       console.log("📦 ALL COMPLAINTS:", res.data);
 
       setComplaints(res.data);
     } catch (err) {
       console.error("❌ FETCH ERROR:", err);
+
+      alert(
+        err.response?.data?.msg ||
+          "Failed to load complaints"
+      );
     } finally {
       setLoading(false);
     }
   };
 
-  // =========================
-  // RESOLVE COMPLAINT
-  // =========================
-  const resolveComplaint = async (id) => {
+  const handleResolve = async (id) => {
     try {
-      await axios.put(
-        `http://localhost:5000/api/complaints/resolve/${id}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+      const res = await api.put(
+        `/complaints/resolve/${id}`
       );
 
-      alert("✅ Complaint resolved");
+      alert(res.data.msg);
 
-      fetchComplaints(); // refresh list
+      fetchComplaints();
     } catch (err) {
       console.error("❌ RESOLVE ERROR:", err);
-      alert("Failed to resolve complaint");
+
+      alert(
+        err.response?.data?.msg ||
+          "Failed to resolve complaint"
+      );
     }
   };
 
@@ -93,63 +48,235 @@ export default function WardenComplaints() {
     fetchComplaints();
   }, []);
 
-  if (loading) return <p>Loading complaints...</p>;
+  if (loading) {
+    return (
+      <div className="complaints-page">
+        <div className="complaints-loading">
+          <div className="loading-spinner"></div>
+          <h3>Loading complaints...</h3>
+          <p>Fetching student complaints</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>🛠 Warden – Complaints</h2>
+    <div className="complaints-page">
+
+      {/* ================= HEADER ================= */}
+
+      <div className="complaints-header">
+
+        <div>
+          <p className="complaints-eyebrow">
+            WARDEN MANAGEMENT
+          </p>
+
+          <h1>🛠️ Complaints</h1>
+
+          <p>
+            Review and manage complaints submitted
+            by hostel students.
+          </p>
+        </div>
+
+        <div className="complaints-count">
+          <span>{complaints.length}</span>
+          <small>Total</small>
+        </div>
+
+      </div>
+
+
+      {/* ================= EMPTY ================= */}
 
       {complaints.length === 0 ? (
-        <p>No complaints found</p>
+
+        <div className="complaints-empty">
+
+          <div className="empty-icon">
+            ✓
+          </div>
+
+          <h2>No Complaints Found</h2>
+
+          <p>
+            There are currently no complaints
+            submitted by students.
+          </p>
+
+        </div>
+
       ) : (
-        complaints.map((c) => {
-          const status = String(c.status).toLowerCase();
 
-          console.log("🟡 STATUS:", status);
+        <div className="complaints-list">
 
-          return (
-            <div
-              key={c._id}
-              style={{
-                border: "1px solid #ccc",
-                padding: 15,
-                marginBottom: 12,
-                borderRadius: 6,
-              }}
-            >
-              <h4>{c.category}</h4>
-              <p>{c.description}</p>
+          {complaints.map((c) => {
 
-              <p>
-                <b>Student:</b>{" "}
-                {c.student?.name || "Unknown"}
-              </p>
+            const status =
+              c.status?.toLowerCase();
 
-              <p>
-                <b>Status:</b>{" "}
-                {status === "pending" ? "⏳ Pending" : "✅ Resolved"}
-              </p>
+            return (
+              <div
+                key={c._id}
+                className={`complaint-card ${
+                  status === "pending"
+                    ? "complaint-pending"
+                    : "complaint-resolved"
+                }`}
+              >
 
-              {/* 🔥 RESOLVE BUTTON */}
-              {status === "pending" && (
-                <button
-                  onClick={() => resolveComplaint(c._id)}
-                  style={{
-                    padding: "6px 12px",
-                    background: "#28a745",
-                    color: "#fff",
-                    border: "none",
-                    cursor: "pointer",
-                    borderRadius: 4,
-                  }}
-                >
-                  Resolve
-                </button>
-              )}
-            </div>
-          );
-        })
+                {/* ================= CARD TOP ================= */}
+
+                <div className="complaint-top">
+
+                  <div className="complaint-title-area">
+
+                    <div className="complaint-icon">
+                      🛠️
+                    </div>
+
+                    <div>
+                      <h2>
+                        {c.title ||
+                          c.category}
+                      </h2>
+
+                      <span>
+                        {c.category}
+                      </span>
+                    </div>
+
+                  </div>
+
+                  <div
+                    className={`status-badge ${
+                      status === "pending"
+                        ? "status-pending"
+                        : "status-resolved"
+                    }`}
+                  >
+                    {status === "pending"
+                      ? "⏳ Pending"
+                      : "✅ Resolved"}
+                  </div>
+
+                </div>
+
+
+                {/* ================= STUDENT ================= */}
+
+                <div className="student-info">
+
+                  <div className="student-avatar">
+                    {c.student?.name
+                      ? c.student.name
+                          .charAt(0)
+                          .toUpperCase()
+                      : "?"}
+                  </div>
+
+                  <div>
+
+                    <small>Submitted by</small>
+
+                    <strong>
+                      {c.student?.name ||
+                        "Unknown Student"}
+                    </strong>
+
+                    <span>
+                      {c.student?.email ||
+                        "No email available"}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                {/* ================= DESCRIPTION ================= */}
+
+                <div className="complaint-description">
+
+                  <p className="section-label">
+                    DESCRIPTION
+                  </p>
+
+                  <p>
+                    {c.description ||
+                      "No description provided."}
+                  </p>
+
+                </div>
+
+
+                {/* ================= PHOTO ================= */}
+
+                {c.photo && (
+                  <div className="complaint-photo-section">
+
+                    <p className="section-label">
+                      📷 COMPLAINT PHOTO
+                    </p>
+
+                    <img
+                      src={`http://localhost:5000/${c.photo.replace(
+                        /\\/g,
+                        "/"
+                      )}`}
+                      alt="Complaint"
+                      className="complaint-photo"
+                    />
+
+                  </div>
+                )}
+
+
+                {/* ================= FOOTER ================= */}
+
+                <div className="complaint-footer">
+
+                  <div className="complaint-meta">
+                    <span>
+                      Category:{" "}
+                      <b>{c.category}</b>
+                    </span>
+
+                    {c.createdAt && (
+                      <span>
+                        Submitted:{" "}
+                        {new Date(
+                          c.createdAt
+                        ).toLocaleString()}
+                      </span>
+                    )}
+                  </div>
+
+
+                  {/* RESOLVE */}
+
+                  {status === "pending" && (
+                    <button
+                      onClick={() =>
+                        handleResolve(c._id)
+                      }
+                      className="resolve-btn"
+                    >
+                      ✓ Mark Resolved
+                    </button>
+                  )}
+
+                </div>
+
+              </div>
+            );
+          })}
+
+        </div>
+
       )}
+
     </div>
   );
 }

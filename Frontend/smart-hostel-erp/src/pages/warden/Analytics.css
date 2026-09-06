@@ -1,0 +1,427 @@
+/* =========================================
+   MAIN PAGE
+========================================= */
+
+.analytics-page {
+  min-height: calc(100vh - 70px);
+  padding: 32px;
+  background: #f6f8fc;
+  color: #172033;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.analytics-header {
+  margin-bottom: 32px;
+}
+
+.analytics-label {
+  margin: 0 0 6px;
+
+  color: #6366f1;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.analytics-header h1 {
+  margin: 0;
+
+  font-size: 30px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.analytics-header p:last-child {
+  margin-top: 8px;
+
+  color: #6b7280;
+  font-size: 14px;
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.analytics-section {
+  margin-bottom: 32px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 16px;
+}
+
+.section-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  font-size: 19px;
+}
+
+.students-icon {
+  background: #eef2ff;
+}
+
+.night-icon {
+  background: #f3e8ff;
+}
+
+.complaint-icon {
+  background: #fff7ed;
+}
+
+.mess-icon {
+  background: #ecfdf5;
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.section-heading p {
+  margin: 3px 0 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   STUDENT TOTAL
+========================================= */
+
+.student-total-card {
+  min-height: 120px;
+
+  display: flex;
+  align-items: center;
+  gap: 22px;
+
+  padding: 22px 25px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  box-shadow: 0 7px 25px rgba(30, 41, 59, 0.05);
+}
+
+.big-stat {
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eef2ff;
+
+  border-radius: 16px;
+
+  color: #4f46e5;
+
+  font-size: 27px;
+  font-weight: 750;
+}
+
+.student-total-card span {
+  display: block;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.student-total-card small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   ANALYTICS GRID
+========================================= */
+
+.analytics-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+
+/* =========================================
+   ANALYTICS CARD
+========================================= */
+
+.analytics-card {
+  position: relative;
+
+  padding: 20px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  box-shadow:
+    0 7px 25px rgba(30, 41, 59, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.analytics-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 30px rgba(30, 41, 59, 0.08);
+}
+
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #f1f5f9;
+
+  font-size: 15px;
+}
+
+.card-title {
+  color: #64748b;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   CARD VALUE
+========================================= */
+
+.card-value {
+  margin-top: 18px;
+
+  font-size: 30px;
+  font-weight: 750;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================
+   CARD FOOTER
+========================================= */
+
+.card-footer {
+  margin-top: 5px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+}
+
+
+/* =========================================
+   CARD TYPES
+========================================= */
+
+.analytics-card.pending {
+  border-top: 3px solid #f59e0b;
+}
+
+.analytics-card.pending .card-icon {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.analytics-card.approved {
+  border-top: 3px solid #22c55e;
+}
+
+.analytics-card.approved .card-icon {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.analytics-card.rejected {
+  border-top: 3px solid #ef4444;
+}
+
+.analytics-card.rejected .card-icon {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.analytics-card.unpaid {
+  border-top: 3px solid #64748b;
+}
+
+.analytics-card.unpaid .card-icon {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.analytics-loading {
+  min-height: 60vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #64748b;
+}
+
+.analytics-loading h3 {
+  margin: 15px 0 5px;
+
+  color: #334155;
+}
+
+.analytics-loading p {
+  margin: 0;
+
+  font-size: 13px;
+}
+
+.analytics-spinner {
+  width: 38px;
+  height: 38px;
+
+  border: 4px solid #e5e7eb;
+  border-top-color: #6366f1;
+
+  border-radius: 50%;
+
+  animation: analyticsSpin 0.8s linear infinite;
+}
+
+@keyframes analyticsSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.analytics-empty {
+  max-width: 450px;
+
+  margin: 80px auto;
+  padding: 35px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 25px rgba(30, 41, 59, 0.05);
+}
+
+.analytics-empty div {
+  font-size: 40px;
+}
+
+.analytics-empty h3 {
+  margin: 12px 0 5px;
+}
+
+.analytics-empty p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .analytics-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .analytics-page {
+    padding: 18px;
+  }
+
+  .analytics-header h1 {
+    font-size: 24px;
+  }
+
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-total-card {
+    padding: 18px;
+  }
+
+}

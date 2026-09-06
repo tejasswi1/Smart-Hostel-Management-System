@@ -1,179 +1,398 @@
-const MessBill = require("../models/MessBill");
 const User = require("../models/User");
+const MessTransaction = require("../models/MessTransaction");
+const createAuditLog = require("../utils/createAuditLog");
+const createNotification = require("../utils/createNotification");
 
-/* ================= STUDENT UPLOAD ADVANCE ================= */
-exports.uploadAdvancePayment = async (req, res) => {
+const MESS_AMOUNT = 36000;
+const MEAL_AMOUNT = 100;
+
+/* ===========================================================
+   STUDENT
+   Submit ₹36,000 Mess Payment Screenshot
+=========================================================== */
+
+exports.uploadMessPayment = async (req, res) => {
   try {
     if (!req.file) {
-      return res.status(400).json({ msg: "Screenshot required" });
-    }
-
-    const amount = Number(req.body.amount);
-    if (!amount || amount <= 0) {
-      return res.status(400).json({ msg: "Valid amount required" });
-    }
-
-    const user = await User.findById(req.user.id);
-
-    user.advancePaymentScreenshot = req.file.path;
-    user.pendingAdvanceAmount = amount;
-    user.advancePaymentStatus = "PENDING";
-
-    await user.save();
-    res.json({ msg: "Advance uploaded successfully" });
-  } catch (err) {
-    res.status(500).json({ msg: "Server error" });
-  }
-};
-
-/* ================= WARDEN APPROVE ADVANCE ================= */
-exports.approveAdvancePayment = async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-
-    if (!user || user.advancePaymentStatus !== "PENDING") {
-      return res.status(400).json({ msg: "Invalid request" });
-    }
-
-    user.advanceAmount += user.pendingAdvanceAmount;
-    user.pendingAdvanceAmount = 0;
-    user.advancePaymentStatus = "APPROVED";
-
-    await user.save();
-    res.json({ msg: "Advance approved" });
-  } catch (err) {
-    res.status(500).json({ msg: "Server error" });
-  }
-};
-
-/* ================= WARDEN CREATE BILL ================= */
-exports.createMessBill = async (req, res) => {
-  const { studentId, month, baseAmount, perDayAmount } = req.body;
-
-  if (!studentId || !month || !baseAmount) {
-    return res.status(400).json({ msg: "All fields required" });
-  }
-
-  try {
-    const bill = await MessBill.create({
-      student: studentId,
-      month,
-      baseAmount,
-      perDayAmount: perDayAmount || 100,
-      totalCutAmount: 0,
-      finalAmount: baseAmount,
-    });
-
-    res.status(201).json(bill);
-  } catch (err) {
-    // 🔥 duplicate month bill
-    if (err.code === 11000) {
       return res.status(400).json({
-        msg: "Bill already exists for this student & month",
+        msg: "Payment screenshot is required",
       });
     }
 
-    console.error("CREATE BILL ERROR:", err);
-    res.status(500).json({ msg: "Server error" });
-  }
-};
-
-   
-
-/* ================= STUDENT VIEW WALLET + BILLS ================= */
-exports.myMessBills = async (req, res) => {
-  try {
     const user = await User.findById(req.user.id);
-    const bills = await MessBill.find({ student: req.user.id });
 
-    res.json({
-      advanceAmount: user.advanceAmount,
-      usedAmount: user.usedAmount,
-      remainingFund: user.advanceAmount - user.usedAmount,
-      bills,
-    });
-  } catch (err) {
-    res.status(500).json({ msg: "Server error" });
-  }
-};
-
-/* ================= PUBLIC / WARDEN VIEW ALL BILLS ================= */
-exports.allMessBills = async (req, res) => {
-  try {
-    const bills = await MessBill.find().populate("student", "name email");
-    res.json(bills);
-  } catch (err) {
-    res.status(500).json({ msg: "Server error" });
-  }
-};
-
-/* ================= STUDENT REQUEST CUT ================= */
-exports.requestMessCut = async (req, res) => {
-  try {
-    const { days, reason } = req.body;
-    if (!days || days <= 0 || !reason) {
-      return res.status(400).json({ msg: "Invalid data" });
+    if (!user) {
+      return res.status(404).json({
+        msg: "Student not found",
+      });
     }
 
-    const bill = await MessBill.findById(req.params.id);
-    if (!bill || bill.student.toString() !== req.user.id) {
-      return res.status(403).json({ msg: "Unauthorized" });
+    if (user.messPaymentStatus === "PENDING") {
+      return res.status(400).json({
+        msg: "Previous payment is still waiting for approval",
+      });
     }
+   if (user.messPaymentStatus === "APPROVED") {
+  return res.status(400).json({
+    msg: "Your ₹36,000 mess payment is already approved.",
+  });
+} 
 
-    bill.messCuts.push({ days, reason });
-    await bill.save();
+    user.messInitialAmount = MESS_AMOUNT;
+    user.messPaymentScreenshot = req.file.path;
+    user.messPaymentStatus = "PENDING";
 
-    res.json({ msg: "Cut requested" });
-  } catch (err) {
-    res.status(500).json({ msg: "Server error" });
-  }
-};
-
-/* ================= WARDEN APPROVE CUT ================= */
-exports.approveMessCut = async (req, res) => {
-  try {
-    const { cutId } = req.body;
-    const bill = await MessBill.findById(req.params.id);
-
-    const cut = bill.messCuts.id(cutId);
-    if (!cut) {
-      return res.status(404).json({ msg: "Cut not found" });
-    }
-
-    cut.status = "APPROVED";
-
-    const cutAmount = cut.days * bill.perDayAmount;
-    bill.totalCutAmount += cutAmount;
-    bill.finalAmount = bill.baseAmount - bill.totalCutAmount;
-
-    await bill.save();
-
-    const user = await User.findById(bill.student);
-    user.usedAmount += bill.finalAmount;
     await user.save();
 
-    res.json({ msg: "Cut approved" });
+    await createAuditLog(
+      req.user.id,
+      "MESS_PAYMENT_SUBMITTED",
+      `Mess payment proof submitted for ₹${MESS_AMOUNT}`
+    );
+
+    res.status(200).json({
+      msg: "₹36,000 payment proof submitted successfully. Waiting for warden approval.",
+    });
   } catch (err) {
-    res.status(500).json({ msg: "Server error" });
+    console.error("UPLOAD MESS PAYMENT ERROR:", err);
+
+    res.status(500).json({
+      msg: "Server error",
+      error: err.message,
+    });
   }
 };
 
-/* ================= WARDEN REJECT CUT ================= */
-exports.rejectMessCut = async (req, res) => {
-  try {
-    const { cutId } = req.body;
-    const bill = await MessBill.findById(req.params.id);
 
-    const cut = bill.messCuts.id(cutId);
-    if (!cut) {
-      return res.status(404).json({ msg: "Cut not found" });
+/* ===========================================================
+   WARDEN
+   Approve ₹36,000 Mess Payment
+=========================================================== */
+
+exports.approveMessPayment = async (req, res) => {
+  try {
+    const student = await User.findById(req.params.id);
+
+    if (!student) {
+      return res.status(404).json({
+        msg: "Student not found",
+      });
     }
 
-    cut.status = "REJECTED";
-    await bill.save();
+    if (student.messPaymentStatus !== "PENDING") {
+      return res.status(400).json({
+        msg: "No pending mess payment",
+      });
+    }
 
-    res.json({ msg: "Cut rejected" });
+    student.messInitialAmount = MESS_AMOUNT;
+
+    // Start student's mess balance at ₹36,000
+    student.messBalance = MESS_AMOUNT;
+
+    student.messUsedAmount = 0;
+
+    student.messPaymentStatus = "APPROVED";
+
+    await student.save();
+
+    await createNotification(
+      student._id,
+      "Your ₹36,000 mess payment has been approved."
+    );
+
+    await createAuditLog(
+      req.user.id,
+      "MESS_PAYMENT_APPROVED",
+      `Student ${student._id} mess payment approved for ₹${MESS_AMOUNT}`
+    );
+
+    res.json({
+      msg: "Mess payment approved successfully",
+      balance: student.messBalance,
+    });
   } catch (err) {
-    res.status(500).json({ msg: "Server error" });
+    console.error("APPROVE MESS PAYMENT ERROR:", err);
+
+    res.status(500).json({
+      msg: "Server error",
+      error: err.message,
+    });
+  }
+};
+
+
+/* ===========================================================
+   WARDEN
+   Reject Mess Payment
+=========================================================== */
+
+exports.rejectMessPayment = async (req, res) => {
+  try {
+    const student = await User.findById(req.params.id);
+
+    if (!student) {
+      return res.status(404).json({
+        msg: "Student not found",
+      });
+    }
+
+    if (student.messPaymentStatus !== "PENDING") {
+      return res.status(400).json({
+        msg: "No pending mess payment",
+      });
+    }
+
+    student.messPaymentStatus = "REJECTED";
+    student.messPaymentScreenshot = "";
+
+    await student.save();
+
+    await createNotification(
+      student._id,
+      "Your mess payment proof was rejected. Please upload it again."
+    );
+
+    await createAuditLog(
+      req.user.id,
+      "MESS_PAYMENT_REJECTED",
+      `Student ${student._id} mess payment rejected`
+    );
+
+    res.json({
+      msg: "Mess payment rejected",
+    });
+  } catch (err) {
+    console.error("REJECT MESS PAYMENT ERROR:", err);
+
+    res.status(500).json({
+      msg: "Server error",
+      error: err.message,
+    });
+  }
+};
+
+
+/* ===========================================================
+   STUDENT
+   Get Mess Balance
+=========================================================== */
+
+exports.myMess = async (req, res) => {
+  try {
+    const student = await User.findById(req.user.id);
+
+    if (!student) {
+      return res.status(404).json({
+        msg: "Student not found",
+      });
+    }
+
+    const currentMonth = new Date().toISOString().slice(0, 7);
+
+    const transactions = await MessTransaction.find({
+      student: req.user.id,
+      month: currentMonth,
+    }).sort({ createdAt: -1 });
+
+    res.json({
+      initialAmount: student.messInitialAmount,
+      usedAmount: student.messUsedAmount,
+      balance: student.messBalance,
+      paymentStatus: student.messPaymentStatus,
+      mealsThisMonth: transactions.length,
+      transactions,
+    });
+  } catch (err) {
+    console.error("MY MESS ERROR:", err);
+
+    res.status(500).json({
+      msg: "Server error",
+      error: err.message,
+    });
+  }
+};
+
+
+/* ===========================================================
+   STUDENT
+   Scan Mess QR = Meal Attendance
+=========================================================== */
+
+exports.scanQR = async (req, res) => {
+  try {
+    const { qrData } = req.body;
+
+if (qrData !== "MMUT_HOSTEL_MESS") {
+  return res.status(400).json({
+    msg: "Invalid mess QR",
+  });
+}
+    const student = await User.findById(req.user.id);
+
+    if (!student) {
+      return res.status(404).json({
+        msg: "Student not found",
+      });
+    }
+
+    // Payment must be approved first
+    if (student.messPaymentStatus !== "APPROVED") {
+      return res.status(400).json({
+        msg: "Your ₹36,000 mess payment has not been approved yet.",
+      });
+    }
+
+    // Enough balance?
+    if (student.messBalance < MEAL_AMOUNT) {
+      return res.status(400).json({
+        msg: "Insufficient mess balance.",
+      });
+    }
+
+    const now = new Date();
+
+    const mealDate = now.toISOString().slice(0, 10);
+    const month = now.toISOString().slice(0, 7);
+
+    // Check whether student already ate today
+    const alreadyScanned = await MessTransaction.findOne({
+      student: req.user.id,
+      mealDate,
+    });
+
+    if (alreadyScanned) {
+      return res.status(400).json({
+        msg: "Today's meal has already been recorded.",
+      });
+    }
+
+    // Deduct ₹100
+    student.messBalance -= MEAL_AMOUNT;
+
+    student.messUsedAmount += MEAL_AMOUNT;
+
+    await student.save();
+
+    let transaction;
+
+    try {
+      transaction = await MessTransaction.create({
+        student: student._id,
+        amount: MEAL_AMOUNT,
+        mealDate,
+        month,
+        balanceAfter: student.messBalance,
+      });
+    } catch (err) {
+      // If duplicate QR scan happens simultaneously,
+      // restore balance.
+      student.messBalance += MEAL_AMOUNT;
+      student.messUsedAmount -= MEAL_AMOUNT;
+
+      await student.save();
+
+      if (err.code === 11000) {
+        return res.status(400).json({
+          msg: "Today's meal has already been recorded.",
+        });
+      }
+
+      throw err;
+    }
+
+    await createAuditLog(
+      req.user.id,
+      "MESS_MEAL_RECORDED",
+      `Meal recorded for ${mealDate}, ₹${MEAL_AMOUNT} deducted`
+    );
+
+    res.json({
+      msg: "Meal attendance recorded successfully.",
+      amountDeducted: MEAL_AMOUNT,
+      balance: student.messBalance,
+      transaction,
+    });
+  } catch (err) {
+    console.error("SCAN QR ERROR:", err);
+
+    res.status(500).json({
+      msg: "Server error",
+      error: err.message,
+    });
+  }
+};
+
+
+/* ===========================================================
+   STUDENT
+   Transaction History
+=========================================================== */
+
+exports.myTransactions = async (req, res) => {
+  try {
+    const transactions = await MessTransaction.find({
+      student: req.user.id,
+    }).sort({ createdAt: -1 });
+
+    res.json(transactions);
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      msg: "Server error",
+      error: err.message,
+    });
+  }
+};
+
+
+/* ===========================================================
+   WARDEN
+   Pending Mess Payments
+=========================================================== */
+
+exports.pendingMessPayments = async (req, res) => {
+  try {
+    const students = await User.find({
+      role: "student",
+      messPaymentStatus: "PENDING",
+    }).select(
+      "_id name email messInitialAmount messPaymentScreenshot messPaymentStatus"
+    );
+
+    res.json(students);
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      msg: "Server error",
+      error: err.message,
+    });
+  }
+};
+
+
+/* ===========================================================
+   WARDEN
+   All Student Mess Records
+=========================================================== */
+
+exports.allMessRecords = async (req, res) => {
+  try {
+    const students = await User.find({
+      role: "student",
+    }).select(
+      "_id name email messInitialAmount messUsedAmount messBalance messPaymentStatus"
+    );
+
+    res.json(students);
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      msg: "Server error",
+      error: err.message,
+    });
   }
 };
