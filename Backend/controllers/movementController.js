@@ -1,4 +1,4 @@
-const Movement = require("../models/Movement"); // Make sure filename matches exactly
+const Movement = require("../models/movement"); // Make sure filename matches exactly
 
 // Student goes out
 exports.goOut = async (req, res) => {
