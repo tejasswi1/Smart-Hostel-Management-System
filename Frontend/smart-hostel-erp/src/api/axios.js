@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://smart-hostel-management-system-1-h4aw.onrender.com/api",
+  baseURL: import.meta.env.VITE_API_URL
 });
 
 // 🔐 Token auto-attach
