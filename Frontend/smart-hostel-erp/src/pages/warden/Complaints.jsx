@@ -214,24 +214,18 @@ export default function WardenComplaints() {
                 {/* ================= PHOTO ================= */}
 
                 {c.photo && (
-                  <div className="complaint-photo-section">
+  <div className="complaint-photo-section">
+    <p className="section-label">
+      📷 COMPLAINT PHOTO
+    </p>
 
-                    <p className="section-label">
-                      📷 COMPLAINT PHOTO
-                    </p>
-
-                    <img
-                      src={`http://localhost:5000/${c.photo.replace(
-                        /\\/g,
-                        "/"
-                      )}`}
-                      alt="Complaint"
-                      className="complaint-photo"
-                    />
-
-                  </div>
-                )}
-
+    <img
+      src={c.photo}
+      alt="Complaint"
+      className="complaint-photo"
+    />
+  </div>
+)}
 
                 {/* ================= FOOTER ================= */}
 
