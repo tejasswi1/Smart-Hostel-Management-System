@@ -11,24 +11,28 @@ export default function Login() {
 
   const navigate = useNavigate();
   const { setUser } = useAuth();
+  const API_URL = import.meta.env.VITE_API_URL;
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+ 
 
-    try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-      const data = await res.json();
+  try {
+    const res = await fetch(`${API_URL}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    const data = await res.json();
+    
       console.log("LOGIN RESPONSE 👉", data);
 
       if (!res.ok) {
