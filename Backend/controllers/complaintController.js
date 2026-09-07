@@ -5,17 +5,20 @@ const createNotification = require("../utils/createNotification");
 // Student creates a complaint
 const createComplaint = async (req, res) => {
   try {
-    console.log("BODY:",req.body);
-    console.log("FILE:",req.file);
+    console.log("BODY:", req.body);
+    console.log("FILE:", req.file);
+
     const complaint = await Complaint.create({
       student: req.user.id,
       title: req.body.title,
-      category:req.body.category,
+      category: req.body.category,
       description: req.body.description,
       photo: req.file ? req.file.path : null,
-      status:"pending",
+      status: "pending",
     });
-    console.log("status saved",complaint.status);
+
+    console.log("PHOTO URL:", complaint.photo);
+    console.log("STATUS SAVED:", complaint.status);
 
     await createAuditLog(
       req.user.id,
@@ -23,13 +26,20 @@ const createComplaint = async (req, res) => {
       `Complaint ID: ${complaint._id}`
     );
 
-    res.status(201).json({ msg: "Complaint submitted", complaint });
+    res.status(201).json({
+      msg: "Complaint submitted",
+      complaint,
+    });
+
   } catch (err) {
     console.error("CREATE COMPLAINT ERROR:", err);
-    res.status(500).json({ msg: "Server error", error: err.message });
+
+    res.status(500).json({
+      msg: "Server error",
+      error: err.message,
+    });
   }
 };
-
 // Student views own complaints
 const myComplaints = async (req, res) => {
   try {
