@@ -240,22 +240,16 @@ export default function WardenMess() {
 
 
                 {/* SCREENSHOT */}
-
-                {student.messPaymentScreenshot && (
-                  <a
-                    href={`http://localhost:5000/${student.messPaymentScreenshot.replace(
-                      /\\/g,
-                      "/"
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="screenshot-link"
-                  >
-                    📷 View Payment Screenshot
-                  </a>
-                )}
-
-
+{student.messPaymentScreenshot && (
+  <a
+    href={student.messPaymentScreenshot}
+    target="_blank"
+    rel="noreferrer"
+    className="screenshot-link"
+  >
+    📷 View Payment Screenshot
+  </a>
+)}
                 {/* ACTIONS */}
 
                 <div className="payment-actions">
