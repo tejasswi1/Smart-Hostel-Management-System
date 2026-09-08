@@ -391,23 +391,20 @@ export default function StudentComplaints() {
                   {/* PHOTO */}
 
                   {c.photo && (
-                    <div className="complaint-photo-section">
+  <div className="complaint-photo-section">
 
-                      <span>
-                        ATTACHED PHOTO
-                      </span>
+    <span>
+      ATTACHED PHOTO
+    </span>
 
-                      <img
-                        src={`http://localhost:5000/${c.photo.replace(
-                          /\\/g,
-                          "/"
-                        )}`}
-                        alt="Complaint"
-                      />
+    <img
+      src={c.photo}
+      alt="Complaint"
+      className="complaint-photo"
+    />
 
-                    </div>
-                  )}
-
+  </div>
+)}
                   {/* FOOTER */}
 
                   <div className="complaint-footer">
