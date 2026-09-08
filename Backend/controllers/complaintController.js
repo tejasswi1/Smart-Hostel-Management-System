@@ -52,15 +52,19 @@ const myComplaints = async (req, res) => {
 
 // Warden views all complaints
 const allComplaints = async (req, res) => {
-  console.log("warden api hit",req.user.role);
+  console.log("warden api hit", req.user.role);
+
   try {
-    const complaints = await Complaint.find().populate(
-      "student",
-      "name email"
-    );
+    const complaints = await Complaint.find()
+      .populate("student", "name email")
+      .sort({ createdAt: -1 });
+
     res.json(complaints);
   } catch (err) {
-    res.status(500).json({ msg: "Server error", error: err.message });
+    res.status(500).json({
+      msg: "Server error",
+      error: err.message
+    });
   }
 };
 
