@@ -8,24 +8,34 @@
 }
 
 .login-page {
-  width: 100vw;
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100vh;
   min-height: 100vh;
-  margin: 0;
+
+  margin: 0 !important;
   padding: 0;
 
   display: flex;
   flex-direction: row;
 
   background: #f5f7fb;
+
   overflow: hidden;
+
+  z-index: 9999;
 }
 
 
 /* ========================================
    LEFT - SMART HOSTEL
 ======================================== */
+
 .login-brand {
   width: 50%;
+  height: 100vh;
   min-height: 100vh;
 
   background: linear-gradient(135deg, #172033, #292866);
@@ -40,12 +50,12 @@
 
   overflow: hidden;
 
-  /* LEFT + RIGHT BOTH CURVED */
-  border-radius: 35px;
+  border-radius: 0 35px 35px 0;
 
   position: relative;
   z-index: 2;
 }
+
 
 /* ========================================
    BRAND ICON
@@ -65,6 +75,7 @@
   border-radius: 18px;
 
   background: rgba(255, 255, 255, 0.12);
+
   border: 1px solid rgba(255, 255, 255, 0.25);
 
   font-size: 34px;
@@ -79,13 +90,13 @@
   margin: 0 0 22px;
 
   font-size: clamp(38px, 4vw, 58px);
+
   line-height: 1.1;
 
   font-weight: 800;
 
   color: white;
 
-  /* KEEP TITLE HORIZONTAL */
   white-space: nowrap;
 }
 
@@ -100,6 +111,7 @@
   max-width: 560px;
 
   font-size: 19px;
+
   line-height: 1.6;
 
   color: #d5dcf0;
@@ -141,6 +153,7 @@
 
 .brand-features > div:hover {
   background: rgba(255, 255, 255, 0.14);
+
   transform: translateX(4px);
 }
 
@@ -157,6 +170,7 @@
   margin: 0;
 
   font-size: 16px;
+
   font-weight: 600;
 
   color: #f1f5ff;
@@ -171,7 +185,8 @@
   width: 50%;
   height: 100vh;
 
-  margin: 0;
+  margin: 0 !important;
+
   padding: 40px;
 
   display: flex;
@@ -181,6 +196,7 @@
   background: #f5f7fb;
 
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 
@@ -190,7 +206,7 @@
 
 .login-card {
   width: 100%;
-  max-width: 560px;
+  max-width: 500px;
 
   margin: 0;
 
@@ -237,7 +253,9 @@
 }
 
 
-/* KEEP WELCOME BACK HORIZONTAL */
+/* ========================================
+   WELCOME HEADING
+======================================== */
 
 .login-header h2 {
   width: 100%;
@@ -245,6 +263,7 @@
   margin: 0 0 10px;
 
   font-size: 38px;
+
   line-height: 1.2;
 
   font-weight: 800;
@@ -279,6 +298,7 @@
   margin-bottom: 9px;
 
   font-size: 15px;
+
   font-weight: 600;
 
   color: #1e293b;
@@ -336,7 +356,10 @@
 
   flex: 1;
 
+  min-width: 0;
+
   border: none;
+
   outline: none;
 
   padding: 0 15px;
@@ -376,6 +399,7 @@
   color: white;
 
   font-size: 17px;
+
   font-weight: 700;
 
   cursor: pointer;
@@ -398,6 +422,7 @@
 
 .login-button:disabled {
   opacity: 0.7;
+
   cursor: not-allowed;
 }
 
@@ -462,6 +487,10 @@
   .login-card {
     padding: 35px;
   }
+
+  .login-header h2 {
+    font-size: 32px;
+  }
 }
 
 
@@ -472,13 +501,17 @@
 @media (max-width: 700px) {
 
   .login-page {
-    width: 100%;
+    position: relative;
+    inset: auto;
 
+    width: 100%;
+    height: auto;
     min-height: 100vh;
 
     flex-direction: column;
 
     overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .login-brand {
@@ -489,7 +522,6 @@
 
     padding: 40px 25px;
 
-    /* CURVE BOTTOM ON MOBILE */
     border-radius: 0 0 30px 30px;
   }
 
@@ -503,17 +535,26 @@
     font-size: 16px;
   }
 
+  .brand-features {
+    max-width: 100%;
+  }
+
   .login-container {
     width: 100%;
+
     height: auto;
 
     min-height: auto;
 
     padding: 30px 20px;
+
+    overflow: visible;
   }
 
   .login-card {
     width: 100%;
+
+    max-width: 500px;
 
     padding: 30px 25px;
 
@@ -524,5 +565,33 @@
     font-size: 30px;
 
     white-space: normal;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 400px) {
+
+  .login-brand {
+    padding: 30px 20px;
+  }
+
+  .login-brand h1 {
+    font-size: 32px;
+  }
+
+  .login-container {
+    padding: 20px 15px;
+  }
+
+  .login-card {
+    padding: 25px 20px;
+  }
+
+  .login-header h2 {
+    font-size: 27px;
   }
 }
