@@ -168,28 +168,21 @@ export default function WardenNightEntries() {
 
             {/* SELFIE */}
 
-            {e.photo && (
-              <div className="student-photo-section">
+           {e.photo && (
+  <div className="student-photo-section">
+    <div className="photo-heading">
+      <span>📸</span>
+      <strong>Student Selfie</strong>
+    </div>
 
-                <div className="photo-heading">
-                  <span>📸</span>
-                  <strong>Student Selfie</strong>
-                </div>
-
-                <div className="photo-wrapper">
-
-                  <img
-                    src={`http://localhost:5000/${e.photo.replace(
-                      /\\/g,
-                      "/"
-                    )}`}
-                    alt="Student Selfie"
-                  />
-
-                </div>
-
-              </div>
-            )}
+    <div className="photo-wrapper">
+      <img
+        src={e.photo}
+        alt="Student Selfie"
+      />
+    </div>
+  </div>
+)}
 
 
             {/* ACTIONS */}
