@@ -208,26 +208,19 @@ export default function GuardNightEntries() {
               {/* PHOTO */}
 
               {e.photo && (
-                <div className="selfie-section">
+  <div className="selfie-section">
+    <div className="selfie-title">
+      <span>📷</span>
+      <strong>Student Selfie</strong>
+    </div>
 
-                  <div className="selfie-title">
-                    <span>📷</span>
-                    <strong>Student Selfie</strong>
-                  </div>
-
-                  <img
-                    src={`http://localhost:5000/${e.photo.replace(
-                      /\\/g,
-                      "/"
-                    )}`}
-                    alt="Student Selfie"
-                    className="student-selfie"
-                  />
-
-                </div>
-              )}
-
-
+    <img
+      src={e.photo}
+      alt="Student Selfie"
+      className="student-selfie"
+    />
+  </div>
+)}
               {/* ACTION */}
 
               <div className="entry-actions">
